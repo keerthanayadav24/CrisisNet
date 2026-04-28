@@ -115,7 +115,7 @@ export default function App() {
     );
 
     // 🔥 CALL YOUR BACKEND
-    const res = await fetch("https://crisisnet-j42e.onrender.com/", {
+    const res = await fetch("https://crisisnet-j42e.onrender.com/analysis", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -155,9 +155,18 @@ if (text.includes("EMERGENCY: YES")) {
 
 const fetchHospitals = async (lat, lon) => {
   try {
+    
+    const fetchHospitals = async (lat, lon) => {
+  try {
     const res = await fetch(
-      `https://overpass-api.de/api/interpreter?data=[out:json];node[amenity=hospital](around:2000,${lat},${lon});out;`
+      `https://crisisnet-j42e.onrender.com/hospitals`
     );
+    const data = await res.json();
+    setHospitals(data.elements);
+  } catch (err) {
+    console.log("Hospital fetch failed");
+  }
+};
     const data = await res.json();
     setHospitals(data.elements);
   } catch (err) {
