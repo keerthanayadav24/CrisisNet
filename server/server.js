@@ -4,9 +4,6 @@ const cors = require("cors");
 const bodyParser = require("body-parser");
 const { GoogleGenerativeAI } = require("@google/generative-ai");
 
-const cors = require("cors");
-app.use(cors());
-
 const app = express();
 
 app.use(cors());
