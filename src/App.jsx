@@ -115,7 +115,7 @@ export default function App() {
     );
 
     // 🔥 CALL YOUR BACKEND
-    const res = await fetch("https://crisisnet-j42e.onrender.com/analysis", {
+    const res = await fetch("https://crisisnet-j42e.onrender.com", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
