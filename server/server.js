@@ -64,6 +64,20 @@ Keep it clean and minimal.
   }
 });
 
+app.get("/hospitals", async (req, res) => {
+  try {
+    const response = await fetch(
+      "https://overpass-api.de/api/interpreter?data=[out:json];node[amenity=hospital](around:2000,12.934880972248354,77.57131567638758);out;"
+    );
+
+    const data = await response.json();
+    res.json(data);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Hospital fetch failed" });
+  }
+});
+
 app.listen(5000, () => {
   console.log("Server running on http://localhost:5000");
 });
